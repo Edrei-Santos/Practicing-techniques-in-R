@@ -1,0 +1,30 @@
+---
+title: "PCA Covariance - Ranking Companies"
+author: "Edrei Santos"
+output: html_notebook
+---
+
+  The excel file presented in the book show data relative to 12 companies and 3 variables measured in monetary currency. The variables are: Gross_Profit (ganho_bruto), Net Profit (ganho_líquido) and Total Assets (patrimônio). The goal is to rank those companies by their overall performance in those three variables.
+
+  Before starting the analysis, lets take a look at the data:
+
+```{r}
+library(readxl)
+data = read_excel("Data_Chapter_3.1_Mingoti.xlsx", sheet= 1)
+print(data)
+```
+   We cannot do the operations in the dataset above, because there is a column of chars stating the number of the company. We need to remove this column. The information of the company number is not lost, it is stored in the row indexes.
+   
+```{r}
+data = data[,-1] # remove the first column
+print(data)
+```
+   Now we can finally operate. First, I want to see the descriptive stats of the data
+   
+```{r}
+summary(data)
+cat("\n")
+cat("Standard Deviation of each variable: \n\n")
+apply(data, 2, sd)
+```
+   
