@@ -1,4 +1,7 @@
 library(usethis)
+usethis::use_git_config(user.name = "Edrei Santos", user.email = "edreisantoscontact@gmail.com")
 gitcreds::gitcreds_set()
 use_github()
 use_readme_md()
+credentials::set_github_pat("my_pat")
+usethis::edit_r_environ()
