@@ -27,4 +27,16 @@ cat("\n")
 cat("Standard Deviation of each variable: \n\n")
 apply(data, 2, sd)
 ```
+   All of those variables are deeply related, so we can use PCA to find a score that take into account the relationships between all of them. To do that, we also need the covariance matrix of the data:
+   
+```{r}
+cov_data = cov(data)
+cat("Covariance Matrix: \n\n")
+print(cov_data)
+```
+   We will now find the eigenvectors and eigenvalues to get the ortogonality of the data.
+   
+```{r}
+eigen(cov_data)
+```
    
