@@ -1,7 +1,9 @@
 ---
 title: "PCA Covariance - Ranking Companies"
 author: "Edrei Santos"
-output: html_notebook
+output:
+  pdf_document: default
+  html_notebook: default
 ---
 
   The excel file presented in the book show data relative to 12 companies and 3 variables measured in monetary currency. The variables are: Gross_Profit (ganho_bruto), Net Profit (ganho_líquido) and Total Assets (patrimônio). The goal is to rank those companies by their overall performance in those three variables.
