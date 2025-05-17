@@ -1873,30 +1873,132 @@ patrimonio     14978232.5     933915.06 34408113.0</code></pre>
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <p>We will now find the eigenvectors and eigenvalues to get the
-ortogonality of the data.</p>
+orthogonality of the data.</p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-output-begin eyJkYXRhIjoiXG48IS0tIHJuYi1zb3VyY2UtYmVnaW4gZXlKa1lYUmhJam9pWUdCZ2NseHVaV2xuWlc0b1kyOTJYMlJoZEdFcFhHNWdZR0FpZlE9PSAtLT5cblxuYGBgclxuZWlnZW4oY292X2RhdGEpXG5gYGBcblxuPCEtLSBybmItc291cmNlLWVuZCAtLT5cbiJ9 -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuZWlnZW4oY292X2RhdGEpXG5gYGAifQ== -->
-<pre class="r"><code>eigen(cov_data)</code></pre>
+<!-- rnb-output-begin eyJkYXRhIjoiXG48IS0tIHJuYi1zb3VyY2UtYmVnaW4gZXlKa1lYUmhJam9pWUdCZ2NseHVaV2xuVm1Gc0lEMGdaV2xuWlc0b1kyOTJYMlJoZEdFcEpIWmhiSFZsYzF4dVpXbG5WbVZqSUQwZ1pXbG5aVzRvWTI5MlgyUmhkR0VwSkhabFkzUnZjbk5jYmx4dVkyRjBLRndpUldsblpXNTJZV3gxWlhNNklGeGNibHhjYmx3aUtWeHVZR0JnSW4wPSAtLT5cblxuYGBgclxuZWlnVmFsID0gZWlnZW4oY292X2RhdGEpJHZhbHVlc1xuZWlnVmVjID0gZWlnZW4oY292X2RhdGEpJHZlY3RvcnNcblxuY2F0KFwiRWlnZW52YWx1ZXM6IFxcblxcblwiKVxuYGBgXG5cbjwhLS0gcm5iLXNvdXJjZS1lbmQgLS0+XG4ifQ== -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuZWlnVmFsID0gZWlnZW4oY292X2RhdGEpJHZhbHVlc1xuZWlnVmVjID0gZWlnZW4oY292X2RhdGEpJHZlY3RvcnNcblxuY2F0KFwiRWlnZW52YWx1ZXM6IFxcblxcblwiKVxuYGBgIn0= -->
+<pre class="r"><code>eigVal = eigen(cov_data)$values
+eigVec = eigen(cov_data)$vectors
+
+cat(&quot;Eigenvalues: \n\n&quot;)</code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-output-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiZWlnZW4oKSBkZWNvbXBvc2l0aW9uXG4kdmFsdWVzXG5bMV0gNDE0NzQzOTEuNDkgIDI1Mzk1MDcuMTMgICAgMjEwOTIuNTNcblxuJHZlY3RvcnNcbiAgICAgICAgICAgIFssMV0gICAgICAgIFssMl0gICAgICAgIFssM11cblsxLF0gLTAuNDI1MDk3MjUgIDAuODk5NzA2ODAgIDAuMDk5MDk1OTNcblsyLF0gLTAuMDI3NjYwODMgIDAuMDk2NTE2NjEgLTAuOTk0OTQ2OTRcblszLF0gLTAuOTA0NzI0OTMgLTAuNDI1NjkwMjkgLTAuMDE2MTQyMzFcbiJ9 -->
-<pre><code>eigen() decomposition
-$values
-[1] 41474391.49  2539507.13    21092.53
-
-$vectors
-            [,1]        [,2]        [,3]
+<!-- rnb-output-begin eyJkYXRhIjoiRWlnZW52YWx1ZXM6IFxuIn0= -->
+<pre><code>Eigenvalues: </code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiXG48IS0tIHJuYi1zb3VyY2UtYmVnaW4gZXlKa1lYUmhJam9pWUdCZ2NseHVjSEpwYm5Rb1pXbG5WbUZzS1Z4dVlHQmdJbjA9IC0tPlxuXG5gYGByXG5wcmludChlaWdWYWwpXG5gYGBcblxuPCEtLSBybmItc291cmNlLWVuZCAtLT5cbiJ9 -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxucHJpbnQoZWlnVmFsKVxuYGBgIn0= -->
+<pre class="r"><code>print(eigVal)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiWzFdIDQxNDc0MzkxLjQ5ICAyNTM5NTA3LjEzICAgIDIxMDkyLjUzXG4ifQ== -->
+<pre><code>[1] 41474391.49  2539507.13    21092.53</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiXG48IS0tIHJuYi1zb3VyY2UtYmVnaW4gZXlKa1lYUmhJam9pWUdCZ2NseHVZMkYwS0Z3aVhGeHVYQ0lwWEc1Z1lHQWlmUT09IC0tPlxuXG5gYGByXG5jYXQoXCJcXG5cIilcbmBgYFxuXG48IS0tIHJuYi1zb3VyY2UtZW5kIC0tPlxuIn0= -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuY2F0KFwiXFxuXCIpXG5gYGAifQ== -->
+<pre class="r"><code>cat(&quot;\n&quot;)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiXG48IS0tIHJuYi1zb3VyY2UtYmVnaW4gZXlKa1lYUmhJam9pWUdCZ2NseHVZMkYwS0Z3aVJXbG5aVzUyWldOMGIzSnpPaUJjWEc1Y1hHNWNJaWxjYm1CZ1lDSjkgLS0+XG5cbmBgYHJcbmNhdChcIkVpZ2VudmVjdG9yczogXFxuXFxuXCIpXG5gYGBcblxuPCEtLSBybmItc291cmNlLWVuZCAtLT5cbiJ9 -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuY2F0KFwiRWlnZW52ZWN0b3JzOiBcXG5cXG5cIilcbmBgYCJ9 -->
+<pre class="r"><code>cat(&quot;Eigenvectors: \n\n&quot;)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiRWlnZW52ZWN0b3JzOiBcbiJ9 -->
+<pre><code>Eigenvectors: </code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiXG48IS0tIHJuYi1zb3VyY2UtYmVnaW4gZXlKa1lYUmhJam9pWUdCZ2NseHVjSEpwYm5Rb1pXbG5WbVZqS1Z4dVlHQmdJbjA9IC0tPlxuXG5gYGByXG5wcmludChlaWdWZWMpXG5gYGBcblxuPCEtLSBybmItc291cmNlLWVuZCAtLT5cbiJ9 -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxucHJpbnQoZWlnVmVjKVxuYGBgIn0= -->
+<pre class="r"><code>print(eigVec)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiICAgICAgICAgICAgWywxXSAgICAgICAgWywyXSAgICAgICAgWywzXVxuWzEsXSAtMC40MjUwOTcyNSAgMC44OTk3MDY4MCAgMC4wOTkwOTU5M1xuWzIsXSAtMC4wMjc2NjA4MyAgMC4wOTY1MTY2MSAtMC45OTQ5NDY5NFxuWzMsXSAtMC45MDQ3MjQ5MyAtMC40MjU2OTAyOSAtMC4wMTYxNDIzMVxuIn0= -->
+<pre><code>            [,1]        [,2]        [,3]
 [1,] -0.42509725  0.89970680  0.09909593
 [2,] -0.02766083  0.09651661 -0.99494694
 [3,] -0.90472493 -0.42569029 -0.01614231</code></pre>
 <!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
+<p>The scores of the PCA are given by the product of the data matrix and
+the eigenvectors. But first, I want to see how much variance is
+explained by each component. To find that, we need to divide the
+eigenvalues by the total variance, which is the sum of all
+eigenvalues.</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-output-begin eyJkYXRhIjoiXG48IS0tIHJuYi1zb3VyY2UtYmVnaW4gZXlKa1lYUmhJam9pWUdCZ2NseHVkRzkwWVd4ZmRtRnlhV0Z1WTJVZ1BTQnpkVzBvWldsblZtRnNLVnh1ZG1GeWFXRnVZMlZmWlhod2JHRnBibVZrSUQwZ1pXbG5WbUZzSUM4Z2RHOTBZV3hmZG1GeWFXRnVZMlZjYm1OaGRDaGNJbFpoY21saGJtTmxJR1Y0Y0d4aGFXNWxaQ0JpZVNCbFlXTm9JR052YlhCdmJtVnVkRG9nWEZ4dVhGeHVYQ0lwWEc1Z1lHQWlmUT09IC0tPlxuXG5gYGByXG50b3RhbF92YXJpYW5jZSA9IHN1bShlaWdWYWwpXG52YXJpYW5jZV9leHBsYWluZWQgPSBlaWdWYWwgLyB0b3RhbF92YXJpYW5jZVxuY2F0KFwiVmFyaWFuY2UgZXhwbGFpbmVkIGJ5IGVhY2ggY29tcG9uZW50OiBcXG5cXG5cIilcbmBgYFxuXG48IS0tIHJuYi1zb3VyY2UtZW5kIC0tPlxuIn0= -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxudG90YWxfdmFyaWFuY2UgPSBzdW0oZWlnVmFsKVxudmFyaWFuY2VfZXhwbGFpbmVkID0gZWlnVmFsIC8gdG90YWxfdmFyaWFuY2VcbmNhdChcIlZhcmlhbmNlIGV4cGxhaW5lZCBieSBlYWNoIGNvbXBvbmVudDogXFxuXFxuXCIpXG5gYGAifQ== -->
+<pre class="r"><code>total_variance = sum(eigVal)
+variance_explained = eigVal / total_variance
+cat(&quot;Variance explained by each component: \n\n&quot;)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiVmFyaWFuY2UgZXhwbGFpbmVkIGJ5IGVhY2ggY29tcG9uZW50OiBcbiJ9 -->
+<pre><code>Variance explained by each component: </code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiXG48IS0tIHJuYi1zb3VyY2UtYmVnaW4gZXlKa1lYUmhJam9pWUdCZ2NseHVjSEpwYm5Rb2RtRnlhV0Z1WTJWZlpYaHdiR0ZwYm1Wa0tWeHVZR0JnSW4wPSAtLT5cblxuYGBgclxucHJpbnQodmFyaWFuY2VfZXhwbGFpbmVkKVxuYGBgXG5cbjwhLS0gcm5iLXNvdXJjZS1lbmQgLS0+XG4ifQ== -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxucHJpbnQodmFyaWFuY2VfZXhwbGFpbmVkKVxuYGBgIn0= -->
+<pre class="r"><code>print(variance_explained)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiWzFdIDAuOTQxODUwNzk2NyAwLjA1NzY3MDIwODYgMC4wMDA0Nzg5OTQ3XG4ifQ== -->
+<pre><code>[1] 0.9418507967 0.0576702086 0.0004789947</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<p>We can see that the first component explains almost 94,2% of the
+variance, while the other two components explain only 5,8% of the
+variance. I want now to check the correlation between the variables and
+the components to help the interpretation of what the components
+mean.</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-output-begin eyJkYXRhIjoiXG48IS0tIHJuYi1zb3VyY2UtYmVnaW4gZXlKa1lYUmhJam9pWUdCZ2NseHVkbUZ5YVdGdVkyVmZZWEp5WVhrZ1BTQmthV0ZuS0dOdmRsOWtZWFJoS1Z4dVhHNGpJRTExYkhScGNHeDVhVzVuSUhSb1pTQmxhV2RsYm5abFkzUnZjbk1nWW5rZ2RHaGxJSE54ZFdGeVpTQnliMjkwSUc5bUlIUm9aU0JsYVdkbGJuWmhiSFZsY3lCcGJpQmhJR052YkhWdGJpMTNhWE5sSUcxaGJtNWxjbHh1ZG1GeWFXRmliR1ZmWVc1a1gyTnZiWEJ2Ym1WdWRGOWpiM0p5Wld4aGRHbHZiaUE5SUhOM1pXVndLR1ZwWjFabFl5d2dNaXdnYzNGeWRDaGxhV2RXWVd3cExDQkdWVTRnUFNCY0lpcGNJaWxjYmx4dUl5QkVhWFpwWkdsdVp5QmllU0IwYUdVZ2MzUmhibVJoY21RZ1pHVjJhV0YwYVc5dUlHOW1JSFJvWlNCMllYSnBZV0pzWlhNZ2FXNGdZU0J5YjNjdGQybHpaU0J0WVc1dVpYSmNiblpoY21saFlteGxYMkZ1WkY5amIyMXdiMjVsYm5SZlkyOXljbVZzWVhScGIyNGdQU0J6ZDJWbGNDaDJZWEpwWVdKc1pWOWhibVJmWTI5dGNHOXVaVzUwWDJOdmNuSmxiR0YwYVc5dUxDQXhMQ0J6Y1hKMEtIWmhjbWxoYm1ObFgyRnljbUY1S1N3Z1JsVk9JRDBnWENJdlhDSXBYRzVjYm1OaGRDaGNJa052Y25KbGJHRjBhVzl1SUdKbGRIZGxaVzRnZG1GeWFXRmliR1Z6SUNoeWIzZHpLU0JoYm1RZ1kyOXRjRzl1Wlc1MGN5QW9ZMjlzZFcxdWN5azZJRnhjYmx4Y2Jsd2lLVnh1WUdCZ0luMD0gLS0+XG5cbmBgYHJcbnZhcmlhbmNlX2FycmF5ID0gZGlhZyhjb3ZfZGF0YSlcblxuIyBNdWx0aXBseWluZyB0aGUgZWlnZW52ZWN0b3JzIGJ5IHRoZSBzcXVhcmUgcm9vdCBvZiB0aGUgZWlnZW52YWx1ZXMgaW4gYSBjb2x1bW4td2lzZSBtYW5uZXJcbnZhcmlhYmxlX2FuZF9jb21wb25lbnRfY29ycmVsYXRpb24gPSBzd2VlcChlaWdWZWMsIDIsIHNxcnQoZWlnVmFsKSwgRlVOID0gXCIqXCIpXG5cbiMgRGl2aWRpbmcgYnkgdGhlIHN0YW5kYXJkIGRldmlhdGlvbiBvZiB0aGUgdmFyaWFibGVzIGluIGEgcm93LXdpc2UgbWFubmVyXG52YXJpYWJsZV9hbmRfY29tcG9uZW50X2NvcnJlbGF0aW9uID0gc3dlZXAodmFyaWFibGVfYW5kX2NvbXBvbmVudF9jb3JyZWxhdGlvbiwgMSwgc3FydCh2YXJpYW5jZV9hcnJheSksIEZVTiA9IFwiL1wiKVxuXG5jYXQoXCJDb3JyZWxhdGlvbiBiZXR3ZWVuIHZhcmlhYmxlcyAocm93cykgYW5kIGNvbXBvbmVudHMgKGNvbHVtbnMpOiBcXG5cXG5cIilcbmBgYFxuXG48IS0tIHJuYi1zb3VyY2UtZW5kIC0tPlxuIn0= -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxudmFyaWFuY2VfYXJyYXkgPSBkaWFnKGNvdl9kYXRhKVxuXG4jIE11bHRpcGx5aW5nIHRoZSBlaWdlbnZlY3RvcnMgYnkgdGhlIHNxdWFyZSByb290IG9mIHRoZSBlaWdlbnZhbHVlcyBpbiBhIGNvbHVtbi13aXNlIG1hbm5lclxudmFyaWFibGVfYW5kX2NvbXBvbmVudF9jb3JyZWxhdGlvbiA9IHN3ZWVwKGVpZ1ZlYywgMiwgc3FydChlaWdWYWwpLCBGVU4gPSBcIipcIilcblxuIyBEaXZpZGluZyBieSB0aGUgc3RhbmRhcmQgZGV2aWF0aW9uIG9mIHRoZSB2YXJpYWJsZXMgaW4gYSByb3ctd2lzZSBtYW5uZXJcbnZhcmlhYmxlX2FuZF9jb21wb25lbnRfY29ycmVsYXRpb24gPSBzd2VlcCh2YXJpYWJsZV9hbmRfY29tcG9uZW50X2NvcnJlbGF0aW9uLCAxLCBzcXJ0KHZhcmlhbmNlX2FycmF5KSwgRlVOID0gXCIvXCIpXG5cbmNhdChcIkNvcnJlbGF0aW9uIGJldHdlZW4gdmFyaWFibGVzIChyb3dzKSBhbmQgY29tcG9uZW50cyAoY29sdW1ucyk6IFxcblxcblwiKVxuYGBgIn0= -->
+<pre class="r"><code>variance_array = diag(cov_data)
+
+# Multiplying the eigenvectors by the square root of the eigenvalues in a column-wise manner
+variable_and_component_correlation = sweep(eigVec, 2, sqrt(eigVal), FUN = &quot;*&quot;)
+
+# Dividing by the standard deviation of the variables in a row-wise manner
+variable_and_component_correlation = sweep(variable_and_component_correlation, 1, sqrt(variance_array), FUN = &quot;/&quot;)
+
+cat(&quot;Correlation between variables (rows) and components (columns): \n\n&quot;)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiQ29ycmVsYXRpb24gYmV0d2VlbiB2YXJpYWJsZXMgKHJvd3MpIGFuZCBjb21wb25lbnRzIChjb2x1bW5zKTogXG4ifQ== -->
+<pre><code>Correlation between variables (rows) and components (columns): </code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiXG48IS0tIHJuYi1zb3VyY2UtYmVnaW4gZXlKa1lYUmhJam9pWUdCZ2NseHVjSEpwYm5Rb2RtRnlhV0ZpYkdWZllXNWtYMk52YlhCdmJtVnVkRjlqYjNKeVpXeGhkR2x2YmlsY2JtQmdZQ0o5IC0tPlxuXG5gYGByXG5wcmludCh2YXJpYWJsZV9hbmRfY29tcG9uZW50X2NvcnJlbGF0aW9uKVxuYGBgXG5cbjwhLS0gcm5iLXNvdXJjZS1lbmQgLS0+XG4ifQ== -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxucHJpbnQodmFyaWFibGVfYW5kX2NvbXBvbmVudF9jb3JyZWxhdGlvbilcbmBgYCJ9 -->
+<pre class="r"><code>print(variable_and_component_correlation)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiICAgICAgICAgICBbLDFdICAgICAgIFssMl0gICAgICAgICAgWywzXVxuWzEsXSAtMC44ODU4NTUzICAwLjQ2MzkzODMgIDAuMDA0NjU2OTgyNFxuWzIsXSAtMC42NDUwMjk3ICAwLjU1NjkzMDkgLTAuNTIzMjI1MjgzM1xuWzMsXSAtMC45OTMyOTAyIC0wLjExNTY0ODAgLTAuMDAwMzk5NjY4MlxuIn0= -->
+<pre><code>           [,1]       [,2]          [,3]
+[1,] -0.8858553  0.4639383  0.0046569824
+[2,] -0.6450297  0.5569309 -0.5232252833
+[3,] -0.9932902 -0.1156480 -0.0003996682</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<p>We can now see that the first component is strongly correlated with
+all three variables, making it the perfect candidate for the overall
+performance score.</p>
+<p>The second component is a comparison between the gross profit and
+total assets, while the third one is basically made of the net profit,
+which is not very useful because the net profit is already included in
+the variables. They are not very useful for what we want.</p>
+<p>Its time to get the scores.</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
 <!-- rnb-text-end -->
 
-<div id="rmd-source-code">LS0tDQp0aXRsZTogIlBDQSBDb3ZhcmlhbmNlIC0gUmFua2luZyBDb21wYW5pZXMiDQphdXRob3I6ICJFZHJlaSBTYW50b3MiDQpvdXRwdXQ6IGh0bWxfbm90ZWJvb2sNCi0tLQ0KDQogIFRoZSBleGNlbCBmaWxlIHByZXNlbnRlZCBpbiB0aGUgYm9vayBzaG93IGRhdGEgcmVsYXRpdmUgdG8gMTIgY29tcGFuaWVzIGFuZCAzIHZhcmlhYmxlcyBtZWFzdXJlZCBpbiBtb25ldGFyeSBjdXJyZW5jeS4gVGhlIHZhcmlhYmxlcyBhcmU6IEdyb3NzX1Byb2ZpdCAoZ2FuaG9fYnJ1dG8pLCBOZXQgUHJvZml0IChnYW5ob19sw61xdWlkbykgYW5kIFRvdGFsIEFzc2V0cyAocGF0cmltw7RuaW8pLiBUaGUgZ29hbCBpcyB0byByYW5rIHRob3NlIGNvbXBhbmllcyBieSB0aGVpciBvdmVyYWxsIHBlcmZvcm1hbmNlIGluIHRob3NlIHRocmVlIHZhcmlhYmxlcy4NCg0KICBCZWZvcmUgc3RhcnRpbmcgdGhlIGFuYWx5c2lzLCBsZXRzIHRha2UgYSBsb29rIGF0IHRoZSBkYXRhOg0KDQpgYGB7cn0NCmxpYnJhcnkocmVhZHhsKQ0KZGF0YSA9IHJlYWRfZXhjZWwoIkRhdGFfQ2hhcHRlcl8zLjFfTWluZ290aS54bHN4Iiwgc2hlZXQ9IDEpDQpwcmludChkYXRhKQ0KYGBgDQogICBXZSBjYW5ub3QgZG8gdGhlIG9wZXJhdGlvbnMgaW4gdGhlIGRhdGFzZXQgYWJvdmUsIGJlY2F1c2UgdGhlcmUgaXMgYSBjb2x1bW4gb2YgY2hhcnMgc3RhdGluZyB0aGUgbnVtYmVyIG9mIHRoZSBjb21wYW55LiBXZSBuZWVkIHRvIHJlbW92ZSB0aGlzIGNvbHVtbi4gVGhlIGluZm9ybWF0aW9uIG9mIHRoZSBjb21wYW55IG51bWJlciBpcyBub3QgbG9zdCwgaXQgaXMgc3RvcmVkIGluIHRoZSByb3cgaW5kZXhlcy4NCiAgIA0KYGBge3J9DQpkYXRhID0gZGF0YVssLTFdICMgcmVtb3ZlIHRoZSBmaXJzdCBjb2x1bW4NCnByaW50KGRhdGEpDQpgYGANCiAgIE5vdyB3ZSBjYW4gZmluYWxseSBvcGVyYXRlLiBGaXJzdCwgSSB3YW50IHRvIHNlZSB0aGUgZGVzY3JpcHRpdmUgc3RhdHMgb2YgdGhlIGRhdGENCiAgIA0KYGBge3J9DQpzdW1tYXJ5KGRhdGEpDQpjYXQoIlxuIikNCmNhdCgiU3RhbmRhcmQgRGV2aWF0aW9uIG9mIGVhY2ggdmFyaWFibGU6IFxuXG4iKQ0KYXBwbHkoZGF0YSwgMiwgc2QpDQpgYGANCiAgIEFsbCBvZiB0aG9zZSB2YXJpYWJsZXMgYXJlIGRlZXBseSByZWxhdGVkLCBzbyB3ZSBjYW4gdXNlIFBDQSB0byBmaW5kIGEgc2NvcmUgdGhhdCB0YWtlIGludG8gYWNjb3VudCB0aGUgcmVsYXRpb25zaGlwcyBiZXR3ZWVuIGFsbCBvZiB0aGVtLiBUbyBkbyB0aGF0LCB3ZSBhbHNvIG5lZWQgdGhlIGNvdmFyaWFuY2UgbWF0cml4IG9mIHRoZSBkYXRhOg0KICAgDQpgYGB7cn0NCmNvdl9kYXRhID0gY292KGRhdGEpDQpjYXQoIkNvdmFyaWFuY2UgTWF0cml4OiBcblxuIikNCnByaW50KGNvdl9kYXRhKQ0KYGBgDQogICBXZSB3aWxsIG5vdyBmaW5kIHRoZSBlaWdlbnZlY3RvcnMgYW5kIGVpZ2VudmFsdWVzIHRvIGdldCB0aGUgb3J0b2dvbmFsaXR5IG9mIHRoZSBkYXRhLg0KICAgDQpgYGB7cn0NCmVpZ2VuKGNvdl9kYXRhKQ0KYGBgDQogICANCg==</div>
+<div id="rmd-source-code">LS0tDQp0aXRsZTogIlBDQSBDb3ZhcmlhbmNlIC0gUmFua2luZyBDb21wYW5pZXMiDQphdXRob3I6ICJFZHJlaSBTYW50b3MiDQpvdXRwdXQ6IGh0bWxfbm90ZWJvb2sNCi0tLQ0KDQogIFRoZSBleGNlbCBmaWxlIHByZXNlbnRlZCBpbiB0aGUgYm9vayBzaG93IGRhdGEgcmVsYXRpdmUgdG8gMTIgY29tcGFuaWVzIGFuZCAzIHZhcmlhYmxlcyBtZWFzdXJlZCBpbiBtb25ldGFyeSBjdXJyZW5jeS4gVGhlIHZhcmlhYmxlcyBhcmU6IEdyb3NzX1Byb2ZpdCAoZ2FuaG9fYnJ1dG8pLCBOZXQgUHJvZml0IChnYW5ob19sw61xdWlkbykgYW5kIFRvdGFsIEFzc2V0cyAocGF0cmltw7RuaW8pLiBUaGUgZ29hbCBpcyB0byByYW5rIHRob3NlIGNvbXBhbmllcyBieSB0aGVpciBvdmVyYWxsIHBlcmZvcm1hbmNlIGluIHRob3NlIHRocmVlIHZhcmlhYmxlcy4NCg0KICBCZWZvcmUgc3RhcnRpbmcgdGhlIGFuYWx5c2lzLCBsZXRzIHRha2UgYSBsb29rIGF0IHRoZSBkYXRhOg0KDQpgYGB7cn0NCmxpYnJhcnkocmVhZHhsKQ0KZGF0YSA9IHJlYWRfZXhjZWwoIkRhdGFfQ2hhcHRlcl8zLjFfTWluZ290aS54bHN4Iiwgc2hlZXQ9IDEpDQpwcmludChkYXRhKQ0KYGBgDQogICBXZSBjYW5ub3QgZG8gdGhlIG9wZXJhdGlvbnMgaW4gdGhlIGRhdGFzZXQgYWJvdmUsIGJlY2F1c2UgdGhlcmUgaXMgYSBjb2x1bW4gb2YgY2hhcnMgc3RhdGluZyB0aGUgbnVtYmVyIG9mIHRoZSBjb21wYW55LiBXZSBuZWVkIHRvIHJlbW92ZSB0aGlzIGNvbHVtbi4gVGhlIGluZm9ybWF0aW9uIG9mIHRoZSBjb21wYW55IG51bWJlciBpcyBub3QgbG9zdCwgaXQgaXMgc3RvcmVkIGluIHRoZSByb3cgaW5kZXhlcy4NCiAgIA0KYGBge3J9DQpkYXRhID0gZGF0YVssLTFdICMgcmVtb3ZlIHRoZSBmaXJzdCBjb2x1bW4NCnByaW50KGRhdGEpDQpgYGANCiAgIE5vdyB3ZSBjYW4gZmluYWxseSBvcGVyYXRlLiBGaXJzdCwgSSB3YW50IHRvIHNlZSB0aGUgZGVzY3JpcHRpdmUgc3RhdHMgb2YgdGhlIGRhdGENCiAgIA0KYGBge3J9DQpzdW1tYXJ5KGRhdGEpDQpjYXQoIlxuIikNCmNhdCgiU3RhbmRhcmQgRGV2aWF0aW9uIG9mIGVhY2ggdmFyaWFibGU6IFxuXG4iKQ0KYXBwbHkoZGF0YSwgMiwgc2QpDQpgYGANCiAgIEFsbCBvZiB0aG9zZSB2YXJpYWJsZXMgYXJlIGRlZXBseSByZWxhdGVkLCBzbyB3ZSBjYW4gdXNlIFBDQSB0byBmaW5kIGEgc2NvcmUgdGhhdCB0YWtlIGludG8gYWNjb3VudCB0aGUgcmVsYXRpb25zaGlwcyBiZXR3ZWVuIGFsbCBvZiB0aGVtLiBUbyBkbyB0aGF0LCB3ZSBhbHNvIG5lZWQgdGhlIGNvdmFyaWFuY2UgbWF0cml4IG9mIHRoZSBkYXRhOg0KICAgDQpgYGB7cn0NCmNvdl9kYXRhID0gY292KGRhdGEpDQpjYXQoIkNvdmFyaWFuY2UgTWF0cml4OiBcblxuIikNCnByaW50KGNvdl9kYXRhKQ0KYGBgDQogICBXZSB3aWxsIG5vdyBmaW5kIHRoZSBlaWdlbnZlY3RvcnMgYW5kIGVpZ2VudmFsdWVzIHRvIGdldCB0aGUgb3J0aG9nb25hbGl0eSBvZiB0aGUgZGF0YS4NCiAgIA0KYGBge3J9DQplaWdWYWwgPSBlaWdlbihjb3ZfZGF0YSkkdmFsdWVzDQplaWdWZWMgPSBlaWdlbihjb3ZfZGF0YSkkdmVjdG9ycw0KDQpjYXQoIkVpZ2VudmFsdWVzOiBcblxuIikNCnByaW50KGVpZ1ZhbCkNCmNhdCgiXG4iKQ0KY2F0KCJFaWdlbnZlY3RvcnM6IFxuXG4iKQ0KcHJpbnQoZWlnVmVjKQ0KYGBgDQogIFRoZSBzY29yZXMgb2YgdGhlIFBDQSBhcmUgZ2l2ZW4gYnkgdGhlIHByb2R1Y3Qgb2YgdGhlIGRhdGEgbWF0cml4IGFuZCB0aGUgZWlnZW52ZWN0b3JzLiBCdXQgZmlyc3QsIEkgd2FudCB0byBzZWUgaG93IG11Y2ggdmFyaWFuY2UgaXMgZXhwbGFpbmVkIGJ5IGVhY2ggY29tcG9uZW50LiBUbyBmaW5kIHRoYXQsIHdlIG5lZWQgdG8gZGl2aWRlIHRoZSBlaWdlbnZhbHVlcyBieSB0aGUgdG90YWwgdmFyaWFuY2UsIHdoaWNoIGlzIHRoZSBzdW0gb2YgYWxsIGVpZ2VudmFsdWVzLg0KYGBge3J9DQp0b3RhbF92YXJpYW5jZSA9IHN1bShlaWdWYWwpDQp2YXJpYW5jZV9leHBsYWluZWQgPSBlaWdWYWwgLyB0b3RhbF92YXJpYW5jZQ0KY2F0KCJWYXJpYW5jZSBleHBsYWluZWQgYnkgZWFjaCBjb21wb25lbnQ6IFxuXG4iKQ0KcHJpbnQodmFyaWFuY2VfZXhwbGFpbmVkKQ0KYGBgDQogIFdlIGNhbiBzZWUgdGhhdCB0aGUgZmlyc3QgY29tcG9uZW50IGV4cGxhaW5zIGFsbW9zdCA5NCwyJSBvZiB0aGUgdmFyaWFuY2UsIHdoaWxlIHRoZSBvdGhlciB0d28gY29tcG9uZW50cyBleHBsYWluIG9ubHkgNSw4JSBvZiB0aGUgdmFyaWFuY2UuIEkgd2FudCBub3cgdG8gY2hlY2sgdGhlIGNvcnJlbGF0aW9uIGJldHdlZW4gdGhlIHZhcmlhYmxlcyBhbmQgdGhlIGNvbXBvbmVudHMgdG8gaGVscCB0aGUgaW50ZXJwcmV0YXRpb24gb2Ygd2hhdCB0aGUgY29tcG9uZW50cyBtZWFuLg0KICANCmBgYHtyfQ0KdmFyaWFuY2VfYXJyYXkgPSBkaWFnKGNvdl9kYXRhKQ0KDQojIE11bHRpcGx5aW5nIHRoZSBlaWdlbnZlY3RvcnMgYnkgdGhlIHNxdWFyZSByb290IG9mIHRoZSBlaWdlbnZhbHVlcyBpbiBhIGNvbHVtbi13aXNlIG1hbm5lcg0KdmFyaWFibGVfYW5kX2NvbXBvbmVudF9jb3JyZWxhdGlvbiA9IHN3ZWVwKGVpZ1ZlYywgMiwgc3FydChlaWdWYWwpLCBGVU4gPSAiKiIpDQoNCiMgRGl2aWRpbmcgYnkgdGhlIHN0YW5kYXJkIGRldmlhdGlvbiBvZiB0aGUgdmFyaWFibGVzIGluIGEgcm93LXdpc2UgbWFubmVyDQp2YXJpYWJsZV9hbmRfY29tcG9uZW50X2NvcnJlbGF0aW9uID0gc3dlZXAodmFyaWFibGVfYW5kX2NvbXBvbmVudF9jb3JyZWxhdGlvbiwgMSwgc3FydCh2YXJpYW5jZV9hcnJheSksIEZVTiA9ICIvIikNCg0KY2F0KCJDb3JyZWxhdGlvbiBiZXR3ZWVuIHZhcmlhYmxlcyAocm93cykgYW5kIGNvbXBvbmVudHMgKGNvbHVtbnMpOiBcblxuIikNCnByaW50KHZhcmlhYmxlX2FuZF9jb21wb25lbnRfY29ycmVsYXRpb24pDQpgYGANCiAgV2UgY2FuIG5vdyBzZWUgdGhhdCB0aGUgZmlyc3QgY29tcG9uZW50IGlzIHN0cm9uZ2x5IGNvcnJlbGF0ZWQgd2l0aCBhbGwgdGhyZWUgdmFyaWFibGVzLCBtYWtpbmcgaXQgdGhlIHBlcmZlY3QgY2FuZGlkYXRlIGZvciB0aGUgb3ZlcmFsbCBwZXJmb3JtYW5jZSBzY29yZS4gDQogIA0KICBUaGUgc2Vjb25kIGNvbXBvbmVudCBpcyBhIGNvbXBhcmlzb24gYmV0d2VlbiB0aGUgZ3Jvc3MgcHJvZml0IGFuZCB0b3RhbCBhc3NldHMsIHdoaWxlIHRoZSB0aGlyZCBvbmUgaXMgYmFzaWNhbGx5IG1hZGUgb2YgdGhlIG5ldCBwcm9maXQsIHdoaWNoIGlzIG5vdCB2ZXJ5IHVzZWZ1bCBiZWNhdXNlIHRoZSBuZXQgcHJvZml0IGlzIGFscmVhZHkgaW5jbHVkZWQgaW4gdGhlIHZhcmlhYmxlcy4gVGhleSBhcmUgbm90IHZlcnkgdXNlZnVsIGZvciB3aGF0IHdlIHdhbnQuDQogIA0KICBJdHMgdGltZSB0byBnZXQgdGhlIHNjb3Jlcy4NCiAgDQpgYGB7cn0NCg0KYGBgDQogIA0KICA=</div>
 
 
 

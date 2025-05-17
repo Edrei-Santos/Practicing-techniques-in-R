@@ -34,9 +34,47 @@ cov_data = cov(data)
 cat("Covariance Matrix: \n\n")
 print(cov_data)
 ```
-   We will now find the eigenvectors and eigenvalues to get the ortogonality of the data.
+   We will now find the eigenvectors and eigenvalues to get the orthogonality of the data.
    
 ```{r}
-eigen(cov_data)
+eigVal = eigen(cov_data)$values
+eigVec = eigen(cov_data)$vectors
+
+cat("Eigenvalues: \n\n")
+print(eigVal)
+cat("\n")
+cat("Eigenvectors: \n\n")
+print(eigVec)
 ```
-   
+  The scores of the PCA are given by the product of the data matrix and the eigenvectors. But first, I want to see how much variance is explained by each component. To find that, we need to divide the eigenvalues by the total variance, which is the sum of all eigenvalues.
+```{r}
+total_variance = sum(eigVal)
+variance_explained = eigVal / total_variance
+cat("Variance explained by each component: \n\n")
+print(variance_explained)
+```
+  We can see that the first component explains almost 94,2% of the variance, while the other two components explain only 5,8% of the variance. I want now to check the correlation between the variables and the components to help the interpretation of what the components mean.
+  
+```{r}
+variance_array = diag(cov_data)
+
+# Multiplying the eigenvectors by the square root of the eigenvalues in a column-wise manner
+variable_and_component_correlation = sweep(eigVec, 2, sqrt(eigVal), FUN = "*")
+
+# Dividing by the standard deviation of the variables in a row-wise manner
+variable_and_component_correlation = sweep(variable_and_component_correlation, 1, sqrt(variance_array), FUN = "/")
+
+cat("Correlation between variables (rows) and components (columns): \n\n")
+print(variable_and_component_correlation)
+```
+  We can now see that the first component is strongly correlated with all three variables, making it the perfect candidate for the overall performance score. 
+  
+  The second component is a comparison between the gross profit and total assets, while the third one is basically made of the net profit, which is not very useful because the net profit is already included in the variables. They are not very useful for what we want.
+  
+  Its time to get the scores.
+  
+```{r}
+
+```
+  
+  
