@@ -69,12 +69,21 @@ print(variable_and_component_correlation)
 ```
   We can now see that the first component is strongly correlated with all three variables, making it the perfect candidate for the overall performance score. 
   
-  The second component is a comparison between the gross profit and total assets, while the third one is basically made of the net profit, which is not very useful because the net profit is already included in the variables. They are not very useful for what we want.
+  The second component is a comparison between the gross profit and total assets, while the third one is basically made of the net profit, which is not very useful because the net profit is already included in the variables.
   
   Its time to get the scores.
   
 ```{r}
-
+scores = data.matrix(data) %*% eigVec[,1] * -1
+print(scores)
 ```
+  The scores are negative because the eigenvector is negative. I multiplied it by -1 to get positive scores. Now the ranking is complete. I will now create a data frame with the scores and the company numbers to make it easier to read, ordered from highest score to worst score.
   
+```{r}
+data = data.frame(Company_Number = rownames(data), Score = scores)
+data = ranking[order(ranking$Score, decreasing = TRUE), ]
+rownames(data) = NULL
+print(data)
+```
+  Best company was company E3, while the worst one was company E9. The ranking is now complete.
   
