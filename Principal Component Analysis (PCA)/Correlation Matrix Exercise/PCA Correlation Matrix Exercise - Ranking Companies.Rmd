@@ -1,0 +1,70 @@
+---
+title: "PCA Analysis with Correlation Matrix"
+author: "Edrei Santos"
+output: html_notebook
+---
+
+Importing Packages:
+```{r}
+library(readxl)
+```
+
+Importing and cleaning data:
+
+```{r}
+data <- read_xlsx("Data_Chapter_3.1_Mingoti.xlsx", sheet = 1)
+data <- data[,-1]
+print(data)
+```
+ Getting descriptive stats of the data:
+```{r}
+summary(data)
+cat(" \nStandard Deviation: \n ")
+apply(data, 2, sd)
+```
+ We will now get the correlation matrix:
+ 
+```{r}
+correlation_matrix <- cor(data)
+cat("Correlation Matrix\n\n")
+print(correlation_matrix)
+```
+ And doing the spectral decomposition is fundamental to find the components
+ 
+```{r}
+eigvec <- eigen(correlation_matrix)$vectors
+eigval <- eigen(correlation_matrix)$values
+cat("Eigenvalues\n\n")
+print(eigval)
+cat("\nEigenvectors\n\n")
+print(eigvec)
+```
+ While in the covariance method we used the percentage of variance explained to choose the components, in the correlation method we will choose the components whose eigenvalues are greater than 1.
+ 
+ After all, if a component explains less variance than a single variable, there is no need to use the component instead of the variable itself.
+ 
+ By that reasoning, we will choose only the first component
+ 
+ But before finding the scores, we also need to standardize the data.
+ 
+```{r}
+data_standardized <- scale(data)
+cat("Standardized Data\n\n")
+print(data_standardized)
+```
+ Now we can find the scores of the first component, I will multiply the results by -1 because the eigenvector is negative,
+ 
+```{r}
+scores <- data_standardized %*% eigvec[,1] * -1
+cat("Scores of the Companies\n\n")
+print(scores)
+```
+ Now we can rank the companies based on the scores:
+ 
+```{r}
+ranked_companies <- data.frame(Company_Number = rownames(data), Score = scores)
+ranked_companies <- ranked_companies[order(-ranked_companies$Score), ]
+rownames(ranked_companies) <- NULL
+print(ranked_companies)
+```
+ Now the analysis and the ranking are done.
